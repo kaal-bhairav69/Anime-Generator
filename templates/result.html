@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Zen+Maru+Gothic:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  background: linear-gradient(to bottom, #2c3e50, #1a1a2e);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+h1 {
+  margin: 30px 0;
+  font-size: 3em;
+  font-weight: 700;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: #ff4d94;
+  text-shadow: 
+    0 0 8px rgba(255, 106, 162, 0.6),
+    0 0 20px rgba(255, 77, 148, 0.3);
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff6aa2, transparent);
+  opacity: 0.8;
+}
+
+h1:hover {
+  text-shadow: 
+    0 0 12px rgba(255, 106, 162, 0.8),
+    0 0 30px rgba(255, 77, 148, 0.5);
+}
+
+/* === CLOUD STYLING === */
+.cloud-box {
+  max-width: 70%;
+  padding: 20px 25px;
+  background: white;
+  border-radius: 16px; /* ⬅ Slightly rounded rectangle */
+  border: 5px solid black; /* ⬅ Black border */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  font-size: 1.1em;
+  font-family: 'Kosugi Maru', sans-serif;
+  color: #333;
+  line-height: 1.6em;
+  opacity: 0;
+  transition: opacity 2s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+.cloud-image-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.cloud-box.visible {
+  opacity: 1;
+}
+
+/* === ALIGNMENT CLASSES === */
+.cloud-left {
+  align-self: flex-start;
+  margin-left: 5%;
+}
+
+.cloud-right {
+  align-self: flex-end;
+  margin-right: 5%;
+}
+
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  width: 100%;
+}
+
+/* === IMAGE === */
+#episode-image {
+  max-width: 420px;
+  width: 90%;
+  height: auto;
+  border-radius: 16px;
+  opacity: 0;
+  filter: brightness(0.3) blur(20px);
+  transition: filter 2s ease, opacity 1s ease;
+  box-shadow: 0 0 40px rgba(255, 105, 180, 0.5);
+  clip-path: inset(0 100% 0 0);
+}
+
+#episode-image.visible {
+  opacity: 1;
+  filter: brightness(1) blur(0);
+  animation: slideReveal 2s ease forwards;
+}
+
+@keyframes slideReveal {
+  0% { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+/* === TO BE CONTINUED OVERLAY === */
+.to-be-continued {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 2s ease;
+}
+
+.to-be-continued.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.to-be-continued h2 {
+  color: #ff69b4;
+  font-size: 4em;
+  text-shadow: 0 0 20px #ff69b4;
+  margin-bottom: 20px;
+  font-family: 'Kaushan Script', cursive;
+}
+
+.to-be-continued p {
+  color: white;
+  font-size: 1.5em;
+  max-width: 80%;
+  text-align: center;
+}
+
+/* === BUTTONS & FORMS === */
+.buttons-container {
+  position: relative;
+  z-index: 1001;
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  padding: 5px 15px;
+  margin: 5px;
+  font-size: 0.7em;
+  border: none;
+  border-radius: 18px;
+  background: linear-gradient(to right, #ffb6c1, #ff69b4);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.08);
+}
+
+form {
+  margin-top: 20px;
+  width: 90%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+input#emotion {
+  width: 100%;
+  padding: 7px 13px;
+  font-size: 0.8em;
+  border-radius: 20px;
+  border: 2px solid #ff99cc;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  box-shadow: 0 0 12px rgba(255, 105, 180, 0.4);
+  backdrop-filter: blur(8px);
+  outline: none;
+  transition: 0.3s ease;
+}
+
+input#emotion:focus {
+  border-color: #ff69b4;
+  box-shadow: 0 0 18px rgba(255, 105, 180, 0.6);
+}
+  </style>
+</head>
+<body>
+  <h1>{{ title }}</h1>
+  {% if story %}
+  {% set half = story|length // 2 %}
+
+ <div class="cloud-image-layout">
+  <!-- Top cloud on left -->
+  <div class="cloud-box cloud-left" id="cloud-top">
+    {{ story[:half] }}
+  </div>
+
+  <!-- Centered image -->
+  <div class="image-wrapper">
+    <img id="episode-image" src="data:image/png;base64,{{ image_data }}" alt="Episode Image">
+  </div>
+
+  <!-- Bottom cloud on right -->
+  <div class="cloud-box cloud-right" id="cloud-bottom">
+    {{ story[half:] }}
+  </div>
+</div>
+
+  <audio id="bg-music" autoplay loop muted>
+    <source src="{{ url_for('static', filename=music_file) }}" type="audio/mpeg">
+  </audio>
+
+  <div class="to-be-continued" id="tbc-overlay">
+    <h2>To Be Continued...</h2>
+    <p>Your journey continues in the next episode</p>
+  </div>
+
+  <script>
+    window.onload = () => {
+      const image = document.getElementById("episode-image");
+      const topCloud = document.getElementById("cloud-top");
+      const bottomCloud = document.getElementById("cloud-bottom");
+      const audioElement = document.getElementById("bg-music");
+      const tbcOverlay = document.getElementById("tbc-overlay");
+
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const source = audioCtx.createMediaElementSource(audioElement);
+      const gainNode = audioCtx.createGain();
+      source.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+
+      audioElement.muted = false;
+      gainNode.gain.setValueAtTime(0.01, audioCtx.currentTime);
+      gainNode.gain.linearRampToValueAtTime(0.7, audioCtx.currentTime + 9);
+
+      audioElement.play().catch(err => {
+        console.warn("Autoplay blocked:", err);
+      });
+
+      setTimeout(() => {
+        image.classList.add("visible");
+        setTimeout(() => {
+          topCloud.classList.add("visible");
+          bottomCloud.classList.add("visible");
+          setTimeout(() => {
+            tbcOverlay.classList.add("show");
+            gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2);
+          }, 35000);
+        }, 2000);
+      }, 3000);
+    };
+  </script>
+  {% endif %}
+
+  <div class="buttons-container">
+    <form method="get" action="/">
+      <button type="submit">🏠 Go Back Home</button>
+    </form>
+    <form method="post" action="/get_emotion">
+      <label for="emotion" style="color: #ffb6c1;">Next Emotion:</label>
+      <input name="emotion" id="emotion" required>
+      <button type="submit">Continue the Story ➤</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Zen+Maru+Gothic:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #2c3e50, #1a1a2e);
+      font-family: 'Zen Maru Gothic', sans-serif;
+      color: #fefefe;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(255, 105, 180, 0.3);
+      border: 2px solid #ff99cc;
+      backdrop-filter: blur(10px);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #ff4d94;
+      text-shadow: 0 0 10px rgba(255, 106, 162, 0.6);
+    }
+
+    input {
+      padding: 12px;
+      width: 100%;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 1em;
+      font-family: 'Zen Maru Gothic', sans-serif;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.2);
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #ffccdd;
+    }
+
+    input:focus {
+      border: 2px solid #ff99cc;
+      box-shadow: 0 0 16px rgba(255, 105, 180, 0.4);
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 30px;
+      background: linear-gradient(to right, #ffb6c1, #ff69b4);
+      border: none;
+      border-radius: 30px;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    a {
+      display: block;
+      margin-top: 15px;
+      color: #ffd6e8;
+      text-decoration: none;
+      font-size: 0.95em;
+    }
+
+    a:hover {
+      text-shadow: 0 0 5px #ff99cc;
+    }
+
+    /* === Responsive Design === */
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 25px;
+      }
+
+      h2 {
+        font-size: 2em;
+      }
+
+      input {
+        font-size: 0.95em;
+      }
+
+      button {
+        font-size: 0.95em;
+        padding: 10px 25px;
+      }
+
+      a {
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Create Account</h2>
+    <form method="POST">
+      <input name="username" placeholder="Username" required><br>
+      <input type="password" name="password" placeholder="Password" required><br>
+      <button type="submit">Sign Up</button>
+    </form>
+    <a href="/login">Already have an account? Login</a>
+  </div>
+</body>
+</html>
+

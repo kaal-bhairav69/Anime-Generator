@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAST EPISODES</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Zen+Maru+Gothic:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fefefe;
+      font-family: 'Zen Maru Gothic', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 30px 0;
+      font-size: 3em;
+      font-weight: 700;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #ff4d94;
+      text-shadow: 0 0 8px rgba(255, 106, 162, 0.6),
+                   0 0 20px rgba(255, 77, 148, 0.3);
+      letter-spacing: 1px;
+      padding-bottom: 10px;
+      position: relative;
+    }
+
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ff6aa2, transparent);
+      opacity: 0.8;
+    }
+
+    h1:hover {
+      text-shadow: 0 0 12px rgba(255, 106, 162, 0.8),
+                   0 0 30px rgba(255, 77, 148, 0.5);
+    }
+
+    img {
+      margin-top: 30px;
+      max-width: 90%;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
+    }
+
+    p {
+      width: 90%;
+      max-width: 800px;
+      margin-top: 30px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+      border: 2px solid #ff99cc;
+      box-shadow: 0 0 25px rgba(255, 105, 180, 0.8),
+                  0 0 60px rgba(255, 105, 180, 0.4);
+      backdrop-filter: blur(10px);
+      font-size: 1.3em;
+      line-height: 2em;
+      text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 1em;
+      font-weight: bold;
+      background: #ff99cc;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff99cc;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #ff66b2;
+      box-shadow: 0 0 20px #ff66b2;
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      padding: 8px 16px;
+      background: #ff99cc;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 105, 180, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .delete-btn:hover {
+      background: #ff66b2;
+      box-shadow: 0 0 18px rgba(255, 105, 180, 0.6);
+      transform: scale(1.05);
+    }
+
+    /* Responsive Tweaks */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.2em;
+      }
+
+      .delete-btn {
+        top: 10px;
+        right: 10px;
+        font-size: 0.8em;
+        padding: 6px 12px;
+      }
+
+      p {
+        font-size: 1.1em;
+        padding: 20px;
+      }
+
+      button {
+        font-size: 0.95em;
+        padding: 8px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>{{ title }}</h1>
+
+  <form method="post" action="{{ url_for('delete_this_episode', episode_id=episode_id) }}" onsubmit="return confirm('Are you sure you want to delete this episode?');">
+    <button class="delete-btn" type="submit">DELETE THIS EPISODE</button>
+  </form>
+
+  {% if story %}
+    <img src="data:image/png;base64,{{ image_data }}" alt="Episode Image">
+    <p>{{ story }}</p>
+  {% endif %}
+
+  <form method="get" action="/">
+    <button type="submit">Go Back Home</button>
+  </form>
+</body>
+</html>
+

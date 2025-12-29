@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Deletion</title>
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .card {
+            background-color: #16213e;
+            border-radius: 12px;
+            display: inline-block;
+            padding: 30px;
+            box-shadow: 0 0 10px #ffb6c1;
+        }
+        .card h2 {
+            margin-bottom: 20px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ffb6c1;
+            color: #000;
+            margin: 0 10px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .buttons button:hover {
+            background-color: #ffb6c1;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Are you sure you want to delete all previous episodes?</h2>
+        <div class="buttons">
+            <form action="/delete_and_create" method="POST" style="display: inline;">
+                <button type="submit">Yes, Delete All</button>
+            </form>
+            <form action="/" method="GET" style="display: inline;">
+                <button type="submit">Cancel</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
