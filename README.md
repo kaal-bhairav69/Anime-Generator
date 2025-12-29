@@ -1,16 +1,29 @@
-# SoulVerse
+# 🌌 SoulVerse — AI Anime Life Simulator
 
-🌸 An evolving anime-style story generation platform with images, music, and emotional storytelling.
+<p align="center">
+  <img src="assets/main.png" width="85%">
+</p>
 
-## Features
-- Dynamic story generation based on emotion
-- Anime-style UI
-- Background music and image generation
-- "To Be Continued..." transition effect
+**SoulVerse** is an AI-powered anime life simulator that generates **dynamic stories and anime-style visuals** in real time.  
+Each run creates a **unique episode** — no hardcoded narratives, no static scenes.
 
-## Run Locally
-```bash
-python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
-pip install -r requirements.txt
-python app.py
+---
+
+## ✨ What It Does
+
+- 🎭 Generates emotion-aware anime stories using AI
+- 🖼️ Creates anime-style visuals from story context
+- 🎶 Presents episodes in a **visual-novel style UI**
+- 👤 Supports login/signup with **per-user episode history**
+- 🗄️ Stores images directly in the database (binary storage)
+
+---
+
+## 🖼️ In-Game Experience
+
+<p align="center">
+  <img src="assets/ui_story.png" width="45%">
+  <img src="assets/ui_image.png" width="45%">
+</p>
+
+---
